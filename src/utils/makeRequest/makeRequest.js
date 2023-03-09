@@ -1,33 +1,26 @@
 import axios from 'axios';
+import { AUTH_URL } from '../../constant/apiEndPoints';
+import { ERROR_ROUTE } from '../../constant/routes';
 
-const authHeader = () => {
-  const token = localStorage.getItem('token');
-  return token ? { Authorization: `Bearer ${token}` } : {};
+const makeAuthRequest = async (apiEndPoint, navigate, dynamicConfig) => {
+  try {
+    const requestDetails = {
+      baseURL: AUTH_URL,
+      url: apiEndPoint.url,
+      method: apiEndPoint.method,
+      ...dynamicConfig,
+    };
+    const { data } = await axios(requestDetails);
+    return data;
+  } catch (e) {
+    const errorStatus = e.response?.status;
+    if (errorStatus) {
+      navigate(`${ERROR_ROUTE}/${errorStatus}`);
+    } else {
+      navigate(ERROR_ROUTE);
+    }
+    return null;
+  }
 };
 
-const makeAuthRequest = async (apiEndPoint, dynamicConfig) => {
-  const requestDetails = {
-    baseURL: 'http://localhost:8000',
-    url: apiEndPoint.url,
-    method: apiEndPoint.method,
-    ...dynamicConfig,
-  };
-  const { data } = await axios(requestDetails);
-  return data;
-};
-
-const makeRequest = async (apiEndPoint, dynamicConfig, token) => {
-  const requestDetails = {
-    baseURL: 'http://localhost:8000',
-    url: apiEndPoint.url,
-    method: apiEndPoint.method,
-    ...dynamicConfig,
-    headers: {
-      authorization: token,
-    },
-  };
-  const { data } = await axios(requestDetails);
-  return data;
-};
-
-export { makeAuthRequest, makeRequest, authHeader };
+export { makeAuthRequest };

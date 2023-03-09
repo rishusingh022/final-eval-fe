@@ -1,12 +1,12 @@
 import React from 'react';
-import './LoginPage.css';
+import './RegisterPage.css';
 
 import { useNavigate } from 'react-router-dom';
 import { Circle } from '../../components';
 import { makeAuthRequest } from '../../utils/makeRequest/makeRequest';
-import { LOGIN_URL } from '../../constant/apiEndPoints';
+import { REGISTER_URL } from '../../constant/apiEndPoints';
 
-function LoginPage() {
+function RegisterPage() {
   const navigate = useNavigate();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -18,22 +18,16 @@ function LoginPage() {
     setPassword(e.target.value);
   };
 
-  const handleLogin = async () => {
-    const data = await makeAuthRequest(LOGIN_URL, navigate, {
+  const handleRegister = async () => {
+    const data = await makeAuthRequest(REGISTER_URL, navigate, {
       data: {
         email,
         password,
       },
     });
     if (data === null) return;
-    localStorage.setItem('token', data);
-    setEmail('');
-    setPassword('');
-    navigate('/');
+    navigate('/login');
   };
-  // React.useEffect(() => {
-  //   if (localStorage.getItem('token') !== null) navigate('/');
-  // }, []);
   return (
     <div className="login-container">
       <div className="left-container">
@@ -63,8 +57,8 @@ function LoginPage() {
             name="password"
             id="password"
           />
-          <button onClick={handleLogin} type="submit">
-            Login
+          <button onClick={handleRegister} type="submit">
+            Register
           </button>
           <label className="forget-password" htmlFor="forget-password">
             Forget Password?
@@ -75,4 +69,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default RegisterPage;
