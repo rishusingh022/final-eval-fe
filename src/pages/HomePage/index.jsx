@@ -1,7 +1,7 @@
 import React from 'react';
 import './HomePage.css';
 import { useNavigate } from 'react-router-dom';
-import { FormField, AddButton } from '../../components';
+import { FormField, AddButton, FormNameCard } from '../../components';
 function HomePage() {
   const navigate = useNavigate();
   React.useEffect(() => {
@@ -13,6 +13,7 @@ function HomePage() {
     <div>
       <FormField />
       <AddButton />
+      <FormNameCard />
     </div>
   );
 }
