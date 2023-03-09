@@ -1,0 +1,84 @@
+.navigation-container {
+  width: 20vw;
+  height: 100vh;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  font-family:  'Montserrat';
+}
+
+.navigation-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 10%;
+  background-color: #f5f5f5;
+  padding: 0 1rem;
+  background-color: rgb(79, 33, 198);
+  color: white;
+}
+
+.navigation-body {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(39, 39, 39);
+  padding-top: 2rem;
+}
+
+.collection-types {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.collection-type-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.collection-type-header h3 {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+    font-weight: bold;
+  color: rgb(154, 154, 154);
+}
+
+.collection-type-header img {
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
+  color: rgb(154, 154, 154);
+}
+
+.collection-type-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  font-size: 20px;
+  color: rgb(125, 125, 125);
+}
+
+.collection-type-body li {
+  text-decoration: none;
+  color: rgb(125, 125, 125);
+  margin: 0.5rem 0;
+  align-items: center;
+}
+
+.content-type-builder {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 2rem;
+    background-color: black;
+}
+
+.content-type-builder p {
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(154, 154, 154);
+    
+}
