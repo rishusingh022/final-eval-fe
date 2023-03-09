@@ -1,0 +1,15 @@
+.circle {
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    top: 2%;
+    right: 42%;
+}
+
+@media screen and (max-width: 768px) {
+    .circle {
+        z-index: -1;
+    }
+}
