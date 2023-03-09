@@ -52,4 +52,4 @@ const makeRequest = async (
   }
 };
 
-export { makeAuthRequest };
+export { makeAuthRequest, makeRequest };
