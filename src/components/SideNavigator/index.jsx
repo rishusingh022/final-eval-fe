@@ -1,7 +1,14 @@
 import React from 'react';
 import './SideNavigator.css';
 import searchIcon from '../../assets/icon-search-dark@2x.png';
-function SideNavigator() {
+import propTypes from 'prop-types';
+function SideNavigator(props) {
+  const [isContentBuilderClicked, setIsContentBuilderClicked] =
+    React.useState(false);
+  const handleContentBuilderClick = () => {
+    setIsContentBuilderClicked(!isContentBuilderClicked);
+    props.handleContentBuilderClick();
+  };
   return (
     <div className="navigation-container">
       <div className="navigation-header">
@@ -22,7 +29,11 @@ function SideNavigator() {
             <li>Company_profile</li>
           </div>
         </div>
-        <div className="content-type-builder">
+        <div
+          onClick={handleContentBuilderClick}
+          style={{ background: isContentBuilderClicked ? 'black' : 'none' }}
+          className="content-type-builder"
+        >
           <p>CONTENT TYPE BUILDER</p>
         </div>
       </div>
@@ -31,3 +42,7 @@ function SideNavigator() {
 }
 
 export default SideNavigator;
+
+SideNavigator.propTypes = {
+  handleContentBuilderClick: propTypes.func,
+};
