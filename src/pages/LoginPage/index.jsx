@@ -2,8 +2,18 @@ import React from 'react';
 import './LoginPage.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { Circle } from '../../components';
-
 function LoginPage() {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
   const handleLogin = async () => {};
   return (
     <div className="login-container">
