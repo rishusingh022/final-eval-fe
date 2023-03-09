@@ -15,3 +15,8 @@ export const VALIDATE_TOKEN_URL = {
   url: '/auth/validate',
   method: 'POST',
 };
+
+export const GET_ALL_COLLECTIONS_URL = {
+  url: 'api/content-form/',
+  method: 'GET',
+};
