@@ -1,0 +1,12 @@
+.add-button-container {
+    height : 50px;
+    width : 100%;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border-style: dashed;
+    border-radius: 1rem;
+    color: rgb(45,33,199);
+    font-size: 1.5rem;
+}
