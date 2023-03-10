@@ -11,6 +11,7 @@ import {
   Header,
 } from '../../components';
 const Name = 'Content Types';
+const { extractFieldNamesFromData } = require('../../utils/common/index');
 function HomePage() {
   const navigate = useNavigate();
   React.useEffect(() => {
@@ -25,6 +26,12 @@ function HomePage() {
     setAllFormData(data);
     console.log(data);
     setIsContentBuilderClicked(!isContentBuilderClicked);
+  };
+  const [isFormFieldsClicked, setIsFormFieldsClicked] = React.useState(false);
+  const [FormFields, setFormFields] = React.useState([]);
+  const handleFormFieldsClick = (formId) => {
+    setFormFields(extractFieldNamesFromData(allFormData, formId));
+    setIsFormFieldsClicked(!isFormFieldsClicked);
   };
   return (
     <div className="home-page-container">
@@ -47,7 +54,9 @@ function HomePage() {
                 {allFormData.map((data, index) => {
                   return (
                     <FormNameCard
+                      handleFormFieldsClick={handleFormFieldsClick}
                       key={index}
+                      id={data.id}
                       formName={data.formName}
                       formfieldsCount={data.formFields.length}
                     />
@@ -57,7 +66,7 @@ function HomePage() {
             )}
           </div>
           <div className="form-details-container">
-            {isContentBuilderClicked && (
+            {isContentBuilderClicked && isFormFieldsClicked && (
               <>
                 <div className="form-detail-name">
                   <h1>Company_profile</h1>
@@ -65,12 +74,20 @@ function HomePage() {
                 </div>
                 <div className="form-field-length">13 Fields</div>
                 <AddButton />
-                <FormField />
-                <FormField />
-                <FormField />
-                <FormField />
-                <FormField />
-                <FormField />
+                {FormFields.map((data, index) => {
+                  const copyData = { ...data };
+                  delete copyData.id;
+                  console.log(copyData);
+                  console.log(Object.keys(copyData)[0]);
+                  return (
+                    <FormField
+                      key={index}
+                      id={data.id}
+                      fieldName={Object.keys(copyData)[0]}
+                      fieldType={Object.keys(copyData)[1]}
+                    />
+                  );
+                })}
               </>
             )}
           </div>

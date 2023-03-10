@@ -4,6 +4,7 @@ import propTypes from 'prop-types';
 function FormNameCard(props) {
   const [clicked, setClicked] = React.useState(false);
   const handleClick = () => {
+    props.handleFormFieldsClick(props.id);
     setClicked(!clicked);
   };
   return (
@@ -24,6 +25,8 @@ function FormNameCard(props) {
 export default FormNameCard;
 
 FormNameCard.propTypes = {
+  handleFormFieldsClick: propTypes.func.isRequired,
   formName: propTypes.string.isRequired,
   formfieldsCount: propTypes.number.isRequired,
+  id: propTypes.string.isRequired,
 };
