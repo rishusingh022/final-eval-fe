@@ -16,7 +16,17 @@ const extractFieldNamesFromData = (data, id) => {
   return fieldNames;
 };
 
+const extractFormName = (data, id) => {
+  let formName = '';
+  data.forEach((form) => {
+    if (form.id === id) {
+      formName = form.formName;
+    }
+  });
+  return formName;
+};
 module.exports = {
   extractFormNameAndIdFromData,
   extractFieldNamesFromData,
+  extractFormName,
 };

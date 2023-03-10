@@ -9,9 +9,13 @@ import {
   FormNameCard,
   SideNavigator,
   Header,
+  Modal,
 } from '../../components';
 const Name = 'Content Types';
-const { extractFieldNamesFromData } = require('../../utils/common/index');
+const {
+  extractFieldNamesFromData,
+  extractFormName,
+} = require('../../utils/common/index');
 function HomePage() {
   const navigate = useNavigate();
   React.useEffect(() => {
@@ -29,9 +33,16 @@ function HomePage() {
   };
   const [isFormFieldsClicked, setIsFormFieldsClicked] = React.useState(false);
   const [FormFields, setFormFields] = React.useState([]);
+  const [formName, setFormName] = React.useState('');
   const handleFormFieldsClick = (formId) => {
+    setFormName(extractFormName(allFormData, formId));
     setFormFields(extractFieldNamesFromData(allFormData, formId));
     setIsFormFieldsClicked(!isFormFieldsClicked);
+  };
+
+  const [isNewTypeCLicked, setIsNewTypeClicked] = React.useState(false);
+  const handleNewTypeClick = () => {
+    setIsNewTypeClicked(!isNewTypeCLicked);
   };
   return (
     <div className="home-page-container">
@@ -42,6 +53,7 @@ function HomePage() {
         <div className="home-page-header">
           <Header Name={Name} />
         </div>
+        {isNewTypeCLicked && <Modal />}
         <div className="home-page-body">
           <div className="form-name-card-container">
             {isContentBuilderClicked && (
@@ -50,7 +62,10 @@ function HomePage() {
                   <p>7 types</p>
                   <img src={searchIcon} alt="search-icon" />
                 </div>
-                <AddButton />
+                <AddButton
+                  handleNewTypeClick={handleNewTypeClick}
+                  name={'+New Types'}
+                />
                 {allFormData.map((data, index) => {
                   return (
                     <FormNameCard
@@ -69,7 +84,7 @@ function HomePage() {
             {isContentBuilderClicked && isFormFieldsClicked && (
               <>
                 <div className="form-detail-name">
-                  <h1>Company_profile</h1>
+                  <h1>{formName}</h1>
                   <img src={editText} alt="editText" />
                 </div>
                 <div className="form-field-length">13 Fields</div>
@@ -77,8 +92,6 @@ function HomePage() {
                 {FormFields.map((data, index) => {
                   const copyData = { ...data };
                   delete copyData.id;
-                  console.log(copyData);
-                  console.log(Object.keys(copyData)[0]);
                   return (
                     <FormField
                       key={index}

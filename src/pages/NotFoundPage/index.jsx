@@ -1,10 +1,10 @@
 import React from 'react';
 import './NotFoundPage.css';
-
+import { Modal } from '../../components';
 function NotFoundPage() {
   return (
     <div className="pageNotFoundContainer">
-      <p>404 Error. Page not found</p>
+      <Modal />
     </div>
   );
 }

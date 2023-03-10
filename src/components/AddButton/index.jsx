@@ -1,11 +1,17 @@
 import React from 'react';
 import './AddButton.css';
-function AddButton() {
+import propTypes from 'prop-types';
+function AddButton(props) {
   return (
-    <div className="add-button-container">
-      <p>Add Another Field</p>
+    <div onClick={props.handleNewTypeClick} className="add-button-container">
+      <p>{props.name}</p>
     </div>
   );
 }
 
 export default AddButton;
+
+AddButton.propTypes = {
+  handleNewTypeClick: propTypes.func,
+  name: propTypes.string,
+};
