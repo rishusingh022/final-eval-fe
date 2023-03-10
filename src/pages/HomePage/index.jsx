@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './HomePage.css';
 import { useNavigate } from 'react-router-dom';
 import searchIcon from '../../assets/icon-search-dark@2x.png';
@@ -33,7 +33,6 @@ function HomePage() {
   const [isNewTypeCLicked, setIsNewTypeClicked] = React.useState(false);
   const [isAnotherFieldClicked, setIsAnotherFieldClicked] =
     React.useState(false);
-
   const handleContentBuilderClick = (data) => {
     setAllFormData(data);
     setIsContentBuilderClicked(!isContentBuilderClicked);
@@ -64,7 +63,7 @@ function HomePage() {
       setFormFields(extractFieldNamesFromData(allFormData, formId));
     };
     getAllCollections();
-  }, [allFormData]);
+  }, [navigate]);
   return (
     <div className="home-page-container">
       <div className="home-page-side-nav">

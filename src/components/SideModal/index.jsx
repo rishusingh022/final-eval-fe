@@ -43,6 +43,7 @@ function SideModal(props) {
                   <div key={index}>
                     <label htmlFor={key}>{key}</label>
                     <input
+                      data-testid={key}
                       onChange={(e) =>
                         setStateObj({
                           ...stateObj,

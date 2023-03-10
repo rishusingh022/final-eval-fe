@@ -27,7 +27,7 @@ export default function AddFieldModal(props) {
   const handleCreate = async () => {
     const data = await makeRequest(ADD_FORM_FIELD_URL(props.formId), navigate, {
       data: {
-        fieldName: fieldType,
+        [fieldName]: fieldType,
       },
     });
     if (data === null) return;
@@ -51,7 +51,7 @@ export default function AddFieldModal(props) {
                 value={fieldName}
                 type="formName"
                 name="formName"
-                id="formName"
+                id="fieldName"
               />
               <label htmlFor="name">Type of field</label>
               <input
@@ -59,7 +59,7 @@ export default function AddFieldModal(props) {
                 value={fieldType}
                 type="formName"
                 name="formName"
-                id="formName"
+                id="fieldType"
               />
             </div>
             <div className="modal-footer">
