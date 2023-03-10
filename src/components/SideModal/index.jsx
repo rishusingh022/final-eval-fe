@@ -9,7 +9,6 @@ import { makeRequest } from '../../utils/makeRequest/makeRequest';
 function SideModal(props) {
   const navigate = useNavigate();
   const { ObjKeys, CollectionName } = props;
-  console.log(ObjKeys, CollectionName);
   const [modal, setModal] = React.useState(true);
 
   const toggleModal = () => {
@@ -27,7 +26,7 @@ function SideModal(props) {
         },
       },
     });
-    console.log(data);
+
     toggleModal();
   };
   return (

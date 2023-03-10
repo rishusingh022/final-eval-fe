@@ -33,7 +33,6 @@ function CollectionResponses() {
   };
 
   const handleCollectionTypeClick = async (formNameid, collectionName) => {
-    console.log(formNameid, collectionName);
     const data = await makeRequest(GET_ALL_FORM_RESPONSES_URL, navigate);
     if (data === null) return;
     const extractedData = extractDataByFormName(data, collectionName);

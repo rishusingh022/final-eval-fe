@@ -26,7 +26,7 @@ function LoginPage() {
       },
     });
     if (data === null) return;
-    localStorage.setItem('token', data);
+    localStorage.setItem('token', data.data);
     setEmail('');
     setPassword('');
     navigate('/');

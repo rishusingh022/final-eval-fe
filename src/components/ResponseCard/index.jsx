@@ -5,7 +5,6 @@ import editIcon from '../../assets/user-edit-text-message-note@2x.png';
 import proptypes from 'prop-types';
 function ResponseCard(props) {
   const { response, clickedFormResponseKeys } = props;
-  console.log(response, clickedFormResponseKeys);
   return (
     <div className="response-class-container">
       <div className="response-item">

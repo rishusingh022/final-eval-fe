@@ -36,7 +36,6 @@ function HomePage() {
 
   const handleContentBuilderClick = (data) => {
     setAllFormData(data);
-    console.log(data);
     setIsContentBuilderClicked(!isContentBuilderClicked);
   };
 
@@ -65,7 +64,7 @@ function HomePage() {
       setFormFields(extractFieldNamesFromData(allFormData, formId));
     };
     getAllCollections();
-  }, [FormFields]);
+  }, []);
   return (
     <div className="home-page-container">
       <div className="home-page-side-nav">

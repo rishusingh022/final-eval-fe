@@ -23,12 +23,8 @@ const makeAuthRequest = async (apiEndPoint, navigate, dynamicConfig) => {
   }
 };
 
-const makeRequest = async (
-  apiEndPoint,
-  navigate,
-  dynamicConfig = {},
-  token
-) => {
+const makeRequest = async (apiEndPoint, navigate, dynamicConfig = {}) => {
+  const token = localStorage.getItem('token');
   try {
     const requestDetails = {
       baseURL: BACKEND_URL,
@@ -36,7 +32,7 @@ const makeRequest = async (
       method: apiEndPoint.method,
       ...dynamicConfig,
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: token,
       },
     };
     const { data } = await axios(requestDetails);

@@ -32,14 +32,12 @@ const extractDataByFormName = (data, formName) => {
       form = item;
     }
   });
-  console.log('form', form);
   return form;
 };
 
 const getfirst4KeysFromObjectIfExits = (obj) => {
   const keys = Object.keys(obj);
   const first4Keys = keys.slice(0, 4);
-  console.log('first4Keys', first4Keys);
   return first4Keys;
 };
 
