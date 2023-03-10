@@ -35,3 +35,8 @@ export const DELETE_FORM_FIELD_URL = (id) => ({
   url: `/api/content-form/${id}`,
   method: 'DELETE',
 });
+
+export const EDIT_FORM_FIELD_URL = (formId, fieldId) => ({
+  url: `/api/content-form/${formId}/${fieldId}`,
+  method: 'PUT',
+});

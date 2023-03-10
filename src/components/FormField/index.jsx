@@ -4,7 +4,10 @@ import deleteIcon from '../../assets/trash-delete-recycle-bin-bucket-waste@2x.pn
 import editIcon from '../../assets/user-edit-text-message-note@2x.png';
 import propTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import { DELETE_FORM_FIELD_URL } from '../../constant/apiEndPoints';
+import {
+  DELETE_FORM_FIELD_URL,
+  EDIT_FORM_FIELD_URL,
+} from '../../constant/apiEndPoints';
 import { makeRequest } from '../../utils/makeRequest/makeRequest';
 
 function FormField(props) {
@@ -20,6 +23,14 @@ function FormField(props) {
     if (data === null) return;
   };
 
+  const handleEdit = async () => {
+    const data = await makeRequest(EDIT_FORM_FIELD_URL(formId, id), navigate, {
+      data: {
+        fieldName: 'Number',
+      },
+    });
+    if (data === null) return;
+  };
   return (
     <div className="form-field-container">
       <div className="form-field-type-label">Ab</div>
@@ -29,7 +40,7 @@ function FormField(props) {
           <div className="form-field-type">{props.fieldType}</div>
         </div>
         <div className="form-field-button">
-          <img src={editIcon} alt="edit" />
+          <img onClick={handleEdit} src={editIcon} alt="edit" />
           <img onClick={handleDelete} src={deleteIcon} alt="delete" />
         </div>
       </div>
