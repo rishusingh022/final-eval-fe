@@ -6,6 +6,7 @@ import {
   NotFoundPage,
   LoginPage,
   RegisterPage,
+  CollectionResponsesPage,
 } from './pages';
 import {
   ERROR_ROUTE,
@@ -13,6 +14,7 @@ import {
   NOT_FOUND_ROUTE,
   LOGIN_ROUTE,
   REGISTER_ROUTE,
+  COLLECTION_RESPONSES_ROUTE,
 } from './constant/routes';
 function App() {
   return (
@@ -24,6 +26,10 @@ function App() {
           <Route path={NOT_FOUND_ROUTE} element={<NotFoundPage />} />
           <Route path={LOGIN_ROUTE} element={<LoginPage />} />
           <Route path={REGISTER_ROUTE} element={<RegisterPage />} />
+          <Route
+            path={COLLECTION_RESPONSES_ROUTE}
+            element={<CollectionResponsesPage />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
