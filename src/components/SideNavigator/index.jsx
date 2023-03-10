@@ -12,7 +12,7 @@ function SideNavigator(props) {
   const navigate = useNavigate();
   const [isContentBuilderClicked, setIsContentBuilderClicked] =
     React.useState(false);
-  const [collectionTypes, setCollectionTypes] = React.useState({});
+  const [collectiontypes, setCollectionTypes] = React.useState({});
   const [allFormdata, setallFormData] = React.useState({});
   const handleContentBuilderClick = () => {
     setIsContentBuilderClicked(!isContentBuilderClicked);
@@ -27,7 +27,7 @@ function SideNavigator(props) {
       setCollectionTypes(collectionTypes);
     };
     getAllCollections();
-  }, [navigate]);
+  }, [navigate, collectiontypes]);
 
   return (
     <div className="navigation-container">
@@ -41,10 +41,10 @@ function SideNavigator(props) {
             <img src={searchIcon} alt="search-icon" />
           </div>
           <div className="collection-type-body">
-            {Object.keys(collectionTypes).map((collectionName) => {
+            {Object.keys(collectiontypes).map((collectionName) => {
               return (
                 <div
-                  key={collectionTypes[collectionName]}
+                  key={collectiontypes[collectionName]}
                   className="collection-type"
                 >
                   <li>{collectionName}</li>

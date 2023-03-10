@@ -62,9 +62,10 @@ function HomePage() {
       const data = await makeRequest(GET_ALL_COLLECTIONS_URL, navigate);
       if (data === null) return;
       setAllFormData(data);
+      setFormFields(extractFieldNamesFromData(allFormData, formId));
     };
     getAllCollections();
-  });
+  }, [FormFields]);
   return (
     <div className="home-page-container">
       <div className="home-page-side-nav">
@@ -118,7 +119,6 @@ function HomePage() {
                   return (
                     <FormField
                       key={index}
-                      id={data.id}
                       formId={formId}
                       fieldName={Object.keys(copyData)[0]}
                       fieldType={Object.values(copyData)[0]}
