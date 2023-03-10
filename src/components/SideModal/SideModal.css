@@ -53,7 +53,7 @@ body.active-modal {
 }
 
 .modal-body > input {
-  width: 100%;
+  width: 96%;
   height: 40px;
   margin-top: 1rem;
   border-radius: 7px;
@@ -62,7 +62,7 @@ body.active-modal {
 
 .modal-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
 }
@@ -84,4 +84,5 @@ body.active-modal {
   border-radius: 7px;
   padding: 1rem 4rem;
   cursor: pointer;
+  margin-right: 1.5rem;
 }
