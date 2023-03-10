@@ -1,11 +1,11 @@
-const extractFormNameFromData = (data) => {
-  const formNames = [];
-  data.forEach((item) => {
-    formNames.push(item.formName);
+const extractFormNameAndIdFromData = (data) => {
+  const formNameAndId = {};
+  data.forEach((form) => {
+    formNameAndId[form.formName] = form.id;
   });
-  return formNames;
+  return formNameAndId;
 };
 
 module.exports = {
-  extractFormNameFromData,
+  extractFormNameAndIdFromData,
 };

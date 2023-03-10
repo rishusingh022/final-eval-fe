@@ -20,8 +20,10 @@ function HomePage() {
   }, []);
   const [isContentBuilderClicked, setIsContentBuilderClicked] =
     React.useState(false);
-
-  const handleContentBuilderClick = () => {
+  const [allFormData, setAllFormData] = React.useState({});
+  const handleContentBuilderClick = (data) => {
+    setAllFormData(data);
+    console.log(data);
     setIsContentBuilderClicked(!isContentBuilderClicked);
   };
   return (
@@ -42,12 +44,15 @@ function HomePage() {
                   <img src={searchIcon} alt="search-icon" />
                 </div>
                 <AddButton />
-                <FormNameCard />
-                <FormNameCard />
-                <FormNameCard />
-                <FormNameCard />
-                <FormNameCard />
-                <FormNameCard />
+                {allFormData.map((data, index) => {
+                  return (
+                    <FormNameCard
+                      key={index}
+                      formName={data.formName}
+                      formfieldsCount={data.formFields.length}
+                    />
+                  );
+                })}
               </>
             )}
           </div>
