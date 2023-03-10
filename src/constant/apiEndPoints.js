@@ -30,3 +30,8 @@ export const ADD_FORM_FIELD_URL = (id) => ({
   url: `/api/content-form/${id}`,
   method: 'PUT',
 });
+
+export const DELETE_FORM_FIELD_URL = (id) => ({
+  url: `/api/content-form/${id}`,
+  method: 'DELETE',
+});

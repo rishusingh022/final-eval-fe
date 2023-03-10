@@ -109,8 +109,9 @@ function HomePage() {
                     <FormField
                       key={index}
                       id={data.id}
+                      formId={formId}
                       fieldName={Object.keys(copyData)[0]}
-                      fieldType={Object.keys(copyData)[1]}
+                      fieldType={Object.values(copyData)[0]}
                     />
                   );
                 })}
