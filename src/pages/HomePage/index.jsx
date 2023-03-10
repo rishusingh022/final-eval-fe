@@ -88,7 +88,7 @@ function HomePage() {
                   <img src={editText} alt="editText" />
                 </div>
                 <div className="form-field-length">13 Fields</div>
-                <AddButton />
+                <AddButton name={'Add another field'} />
                 {FormFields.map((data, index) => {
                   const copyData = { ...data };
                   delete copyData.id;

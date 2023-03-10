@@ -20,3 +20,8 @@ export const GET_ALL_COLLECTIONS_URL = {
   url: 'api/content-form/',
   method: 'GET',
 };
+
+export const CREATE_FORM_URL = {
+  url: 'api/content-form/',
+  method: 'POST',
+};
