@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 function Header(props) {
   return <div className="header">{props.Name}</div>;
 }
-
 export default Header;
 
 Header.propTypes = {

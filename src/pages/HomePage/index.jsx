@@ -64,7 +64,7 @@ function HomePage() {
       setFormFields(extractFieldNamesFromData(allFormData, formId));
     };
     getAllCollections();
-  }, []);
+  }, [allFormData]);
   return (
     <div className="home-page-container">
       <div className="home-page-side-nav">

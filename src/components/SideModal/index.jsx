@@ -26,7 +26,6 @@ function SideModal(props) {
         },
       },
     });
-
     toggleModal();
   };
   return (

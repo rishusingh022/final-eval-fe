@@ -18,11 +18,6 @@ let Name = 'Collection Types';
 const demoKeys = ['id', 'name', 'website', 'contact'];
 function CollectionResponses() {
   const navigate = useNavigate();
-  React.useEffect(() => {
-    if (!localStorage.getItem('token')) {
-      navigate('/login');
-    }
-  });
   const [addNewEntry, setAddNewEntry] = React.useState(false);
   const [clickedformResponse, setClickedformResponse] = React.useState({});
   const [clickedFormResponseKeys, setClickedFormResponseKeys] = React.useState(
@@ -41,6 +36,11 @@ function CollectionResponses() {
       getfirst4KeysFromObjectIfExits(extractedData.formResponses[0])
     );
   };
+  React.useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      navigate('/login');
+    }
+  }, [clickedformResponse]);
   return (
     <div className="collection-page-container">
       <div className="collection-page-side-nav">
