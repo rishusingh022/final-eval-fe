@@ -50,3 +50,8 @@ export const ADD_FORM_RESPONSE_URL = {
   url: '/api/content-form-responses/',
   method: 'POST',
 };
+
+export const DELETE_FORM_RESPONSE_URL = (id) => ({
+  url: `/api/content-form-responses/${id}`,
+  method: 'DELETE',
+});

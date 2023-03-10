@@ -100,6 +100,7 @@ function CollectionResponses() {
                     key={index}
                     response={response}
                     clickedFormResponseKeys={clickedFormResponseKeys}
+                    id={clickedformResponse.id}
                   />
                 );
               })}
