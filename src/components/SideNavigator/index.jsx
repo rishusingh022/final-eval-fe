@@ -12,12 +12,20 @@ function SideNavigator(props) {
   const navigate = useNavigate();
   const [isContentBuilderClicked, setIsContentBuilderClicked] =
     React.useState(false);
+  const [isCollectionTypeClicked, setIsCollectionTypeClicked] =
+    React.useState('');
   const [collectiontypes, setCollectionTypes] = React.useState({});
   const [allFormdata, setallFormData] = React.useState({});
   const handleContentBuilderClick = () => {
     setIsContentBuilderClicked(!isContentBuilderClicked);
     props.handleContentBuilderClick(allFormdata);
   };
+
+  const handleCollectionTypeClick = (id, collectionName) => {
+    setIsCollectionTypeClicked(id);
+    props.handleCollectionTypeClick(id, collectionName);
+  };
+
   React.useEffect(() => {
     const getAllCollections = async () => {
       const data = await makeRequest(GET_ALL_COLLECTIONS_URL, navigate);
@@ -27,7 +35,7 @@ function SideNavigator(props) {
       setCollectionTypes(collectionTypes);
     };
     getAllCollections();
-  }, [navigate, collectiontypes]);
+  }, [navigate]);
 
   return (
     <div className="navigation-container">
@@ -43,11 +51,24 @@ function SideNavigator(props) {
           <div className="collection-type-body">
             {Object.keys(collectiontypes).map((collectionName) => {
               return (
-                <div
-                  key={collectiontypes[collectionName]}
-                  className="collection-type"
-                >
-                  <li>{collectionName}</li>
+                <div key={collectiontypes[collectionName]}>
+                  <li
+                    onClick={() => {
+                      handleCollectionTypeClick(
+                        collectiontypes[collectionName],
+                        collectionName
+                      );
+                    }}
+                    style={{
+                      background:
+                        isCollectionTypeClicked ===
+                        collectiontypes[collectionName]
+                          ? 'black'
+                          : 'none',
+                    }}
+                  >
+                    {collectionName}
+                  </li>
                 </div>
               );
             })}
@@ -69,4 +90,6 @@ export default SideNavigator;
 
 SideNavigator.propTypes = {
   handleContentBuilderClick: propTypes.func,
+  activateCollectionPage: propTypes.bool,
+  handleCollectionTypeClick: propTypes.func,
 };

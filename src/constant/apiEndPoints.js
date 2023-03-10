@@ -40,3 +40,8 @@ export const EDIT_FORM_FIELD_URL = (formId, fieldId) => ({
   url: `/api/content-form/${formId}/${fieldId}`,
   method: 'PUT',
 });
+
+export const GET_ALL_FORM_RESPONSES_URL = {
+  url: '/api/content-form-responses/',
+  method: 'GET',
+};
