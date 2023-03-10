@@ -5,3 +5,4 @@ export { default as FormNameCard } from './FormNameCard';
 export { default as SideNavigator } from './SideNavigator';
 export { default as Header } from './Header';
 export { default as Modal } from './Modal';
+export { default as AddFieldModal } from './AddFieldModal';

@@ -17,11 +17,16 @@ export const VALIDATE_TOKEN_URL = {
 };
 
 export const GET_ALL_COLLECTIONS_URL = {
-  url: 'api/content-form/',
+  url: '/api/content-form/',
   method: 'GET',
 };
 
 export const CREATE_FORM_URL = {
-  url: 'api/content-form/',
+  url: '/api/content-form/',
   method: 'POST',
 };
+
+export const ADD_FORM_FIELD_URL = (id) => ({
+  url: `/api/content-form/${id}`,
+  method: 'PUT',
+});

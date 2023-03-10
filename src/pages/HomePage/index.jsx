@@ -10,6 +10,7 @@ import {
   SideNavigator,
   Header,
   Modal,
+  AddFieldModal,
 } from '../../components';
 const Name = 'Content Types';
 const {
@@ -34,7 +35,9 @@ function HomePage() {
   const [isFormFieldsClicked, setIsFormFieldsClicked] = React.useState(false);
   const [FormFields, setFormFields] = React.useState([]);
   const [formName, setFormName] = React.useState('');
+  const [formId, setFormId] = React.useState('');
   const handleFormFieldsClick = (formId) => {
+    setFormId(formId);
     setFormName(extractFormName(allFormData, formId));
     setFormFields(extractFieldNamesFromData(allFormData, formId));
     setIsFormFieldsClicked(!isFormFieldsClicked);
@@ -44,6 +47,14 @@ function HomePage() {
   const handleNewTypeClick = () => {
     setIsNewTypeClicked(!isNewTypeCLicked);
   };
+
+  const [isAnotherFieldClicked, setIsAnotherFieldClicked] =
+    React.useState(false);
+
+  const handleAnotherFieldClick = () => {
+    setIsAnotherFieldClicked(!isAnotherFieldClicked);
+  };
+
   return (
     <div className="home-page-container">
       <div className="home-page-side-nav">
@@ -53,7 +64,6 @@ function HomePage() {
         <div className="home-page-header">
           <Header Name={Name} />
         </div>
-        {isNewTypeCLicked && <Modal />}
         <div className="home-page-body">
           <div className="form-name-card-container">
             {isContentBuilderClicked && (
@@ -88,7 +98,10 @@ function HomePage() {
                   <img src={editText} alt="editText" />
                 </div>
                 <div className="form-field-length">13 Fields</div>
-                <AddButton name={'Add another field'} />
+                <AddButton
+                  handleAnotherFieldClick={handleAnotherFieldClick}
+                  name={'Add another field'}
+                />
                 {FormFields.map((data, index) => {
                   const copyData = { ...data };
                   delete copyData.id;
@@ -106,6 +119,8 @@ function HomePage() {
           </div>
         </div>
       </div>
+      {isNewTypeCLicked && <Modal />}
+      {isAnotherFieldClicked && <AddFieldModal formId={formId} />}
     </div>
   );
 }
