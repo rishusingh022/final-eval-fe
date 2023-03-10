@@ -2,7 +2,12 @@ import React from 'react';
 import './CollectionResponsesPage.css';
 import { useNavigate } from 'react-router-dom';
 
-import { SideNavigator, Header, ResponseCard } from '../../components';
+import {
+  SideNavigator,
+  Header,
+  ResponseCard,
+  SideModal,
+} from '../../components';
 
 import { makeRequest } from '../../utils/makeRequest/makeRequest';
 let Name = 'Content Builder';
@@ -13,6 +18,11 @@ function CollectionResponses() {
       navigate('/login');
     }
   });
+  const [addNewEntry, setAddNewEntry] = React.useState(false);
+
+  const handleAddNewEntry = () => {
+    setAddNewEntry(!addNewEntry);
+  };
   return (
     <div className="collection-page-container">
       <div className="collection-page-side-nav">
@@ -27,7 +37,10 @@ function CollectionResponses() {
             <div className="collection-page-body-header-title">
               <h1>13 Entries Found</h1>
             </div>
-            <div className="collection-page-body-header-button">
+            <div
+              onClick={handleAddNewEntry}
+              className="collection-page-body-header-button"
+            >
               <div>Add New Entry</div>
             </div>
           </div>
@@ -47,6 +60,7 @@ function CollectionResponses() {
           </div>
         </div>
       </div>
+      {addNewEntry && <SideModal />}
     </div>
   );
 }

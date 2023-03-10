@@ -7,3 +7,4 @@ export { default as Header } from './Header';
 export { default as Modal } from './Modal';
 export { default as AddFieldModal } from './AddFieldModal';
 export { default as ResponseCard } from './ResponseCard';
+export { default as SideModal } from './SideModal';

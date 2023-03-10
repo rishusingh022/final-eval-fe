@@ -40,6 +40,7 @@
   font-size: 1.5rem;
   color : rgb(70,55,206);
   font-weight: 510;
+  cursor: pointer;
 }
 
 .response-field {
