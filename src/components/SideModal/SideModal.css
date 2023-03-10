@@ -1,9 +1,9 @@
-body.active-modal {
+body.active-side-modal {
   overflow-y: hidden;
 }
 
-.modal,
-.overlay {
+.side-modal,
+.side-overlay {
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -13,15 +13,14 @@ body.active-modal {
   position: fixed;
 }
 
-.overlay {
+.side-overlay {
   background: rgba(49, 49, 49, 0.8);
 }
-.modal-content {
+.side-modal-content {
   position: absolute;
   top: 50%;
   left: 83%;
   transform: translate(-50%, -50%);
-  line-height: 1.4;
   background: #f1f1f1;
   padding: 14px 28px;
   border-radius: 3px;
@@ -29,14 +28,14 @@ body.active-modal {
   height: 101%;
 }
 
-.close-modal {
+.close-side-modal {
   position: absolute;
   top: 10px;
   right: 10px;
   padding: 5px 7px;
 }
 
-.modal-header {
+.side-modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,7 +43,7 @@ body.active-modal {
   color: rgb(80, 80, 80);
 }
 
-.modal-body {
+.side-modal-body {
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
@@ -52,7 +51,7 @@ body.active-modal {
   font-size: 1rem;
 }
 
-.modal-body > input {
+.side-modal-body > div > input {
   width: 96%;
   height: 40px;
   margin-top: 1rem;
@@ -60,14 +59,22 @@ body.active-modal {
   border-color: rgb(80, 64, 200);
 }
 
-.modal-footer {
+.side-modal-body > div > label {
+  padding-top: 2rem;
+}
+
+.side-modal-body > div {
+  display: flex;
+  flex-direction: column;
+}
+.side-modal-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
 }
 
-.cancel {
+.side-cancel {
   background: #f1f1f1;
   color: rgb(80, 80, 80);
   border: none;
@@ -77,7 +84,7 @@ body.active-modal {
   font-size: medium;
 }
 
-.create {
+.side-create {
   background: rgb(80, 64, 200);
   color: #f1f1f1;
   border: 1px solid rgb(80, 64, 200);

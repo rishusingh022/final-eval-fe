@@ -107,7 +107,12 @@ function CollectionResponses() {
           </div>
         </div>
       </div>
-      {addNewEntry && <SideModal />}
+      {clickedformResponse.formResponses !== undefined && addNewEntry && (
+        <SideModal
+          ObjKeys={Object.keys(clickedformResponse.formResponses[0])}
+          CollectionName={clickedformResponse.formName}
+        />
+      )}
     </div>
   );
 }

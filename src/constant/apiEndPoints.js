@@ -45,3 +45,8 @@ export const GET_ALL_FORM_RESPONSES_URL = {
   url: '/api/content-form-responses/',
   method: 'GET',
 };
+
+export const ADD_FORM_RESPONSE_URL = {
+  url: '/api/content-form-responses/',
+  method: 'POST',
+};
