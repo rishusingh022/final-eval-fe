@@ -12,30 +12,34 @@ import {
   Modal,
   AddFieldModal,
 } from '../../components';
-const Name = 'Content Types';
+let Name = 'Content Builder';
 const {
   extractFieldNamesFromData,
   extractFormName,
 } = require('../../utils/common/index');
+
+import { makeRequest } from '../../utils/makeRequest/makeRequest';
+import { GET_ALL_COLLECTIONS_URL } from '../../constant/apiEndPoints';
+
 function HomePage() {
   const navigate = useNavigate();
-  React.useEffect(() => {
-    if (!localStorage.getItem('token')) {
-      navigate('/login');
-    }
-  }, []);
   const [isContentBuilderClicked, setIsContentBuilderClicked] =
     React.useState(false);
   const [allFormData, setAllFormData] = React.useState({});
+  const [isFormFieldsClicked, setIsFormFieldsClicked] = React.useState(false);
+  const [FormFields, setFormFields] = React.useState([]);
+  const [formName, setFormName] = React.useState('');
+  const [formId, setFormId] = React.useState('');
+  const [isNewTypeCLicked, setIsNewTypeClicked] = React.useState(false);
+  const [isAnotherFieldClicked, setIsAnotherFieldClicked] =
+    React.useState(false);
+
   const handleContentBuilderClick = (data) => {
     setAllFormData(data);
     console.log(data);
     setIsContentBuilderClicked(!isContentBuilderClicked);
   };
-  const [isFormFieldsClicked, setIsFormFieldsClicked] = React.useState(false);
-  const [FormFields, setFormFields] = React.useState([]);
-  const [formName, setFormName] = React.useState('');
-  const [formId, setFormId] = React.useState('');
+
   const handleFormFieldsClick = (formId) => {
     setFormId(formId);
     setFormName(extractFormName(allFormData, formId));
@@ -43,18 +47,24 @@ function HomePage() {
     setIsFormFieldsClicked(!isFormFieldsClicked);
   };
 
-  const [isNewTypeCLicked, setIsNewTypeClicked] = React.useState(false);
   const handleNewTypeClick = () => {
     setIsNewTypeClicked(!isNewTypeCLicked);
   };
 
-  const [isAnotherFieldClicked, setIsAnotherFieldClicked] =
-    React.useState(false);
-
   const handleAnotherFieldClick = () => {
     setIsAnotherFieldClicked(!isAnotherFieldClicked);
   };
-
+  React.useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      navigate('/login');
+    }
+    const getAllCollections = async () => {
+      const data = await makeRequest(GET_ALL_COLLECTIONS_URL, navigate);
+      if (data === null) return;
+      setAllFormData(data);
+    };
+    getAllCollections();
+  });
   return (
     <div className="home-page-container">
       <div className="home-page-side-nav">
