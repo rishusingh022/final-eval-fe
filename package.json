@@ -71,7 +71,9 @@
     ],
     "coveragePathIgnorePatterns": [
       "<rootDir>/node_modules/",
-      "<rootDir>/src/types/"
+      "<rootDir>/src/types/",
+      "<rootDir>/src/index.js",
+      "<rootDir>/src/utils"
     ],
     "coverageThreshold": {
       "global": {

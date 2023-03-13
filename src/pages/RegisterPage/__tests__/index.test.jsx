@@ -70,6 +70,7 @@ describe('RegisterPage', () => {
     });
   });
   it('should return null if the email is not valid', async () => {
+    makeAuthRequest.mockResolvedValue(null);
     render(<RegisterPage />);
     // take the values of email and password
     const email = screen.getByLabelText('Email');
