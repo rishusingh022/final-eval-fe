@@ -50,6 +50,7 @@ describe('AddFieldModal', () => {
     );
   });
   it('should return null when makeRequest data is null', async () => {
+    makeRequest.mockResolvedValue(null);
     const { container } = render(<AddFieldModal formId={1} />);
     // on click of create button take the value of input field and call makeRequest
     const createButton = screen.getByText('Create');

@@ -9,8 +9,6 @@ const { DELETE_FORM_RESPONSE_URL } = require('../../constant/apiEndPoints');
 function ResponseCard(props) {
   const { response, clickedFormResponseKeys, id } = props;
   const handleDelete = async () => {
-    console.log(response.id);
-    console.log(id);
     const data = await makeRequest(DELETE_FORM_RESPONSE_URL(id), navigate, {
       data: {
         responseId: parseInt(response.id),
